@@ -1,7 +1,7 @@
 console.log("1.  Escriba un reemplazamiento que cambie todos las fracciones de números `num1/num2` a sus inversos `num2/num1`");
 var text = "456.5/237e2 1/9.1 hola 2/5";
 // Change this call.
-var result = text.replace(/.../g, '...');
+var result = text.replace(/(\d|.|e)+/g, '$2/$1');
 console.log(result);
 var expected = `237e2/456.5 9.1/1 hola 2/5`;
 if (expected === result) console.log("OK")
@@ -20,7 +20,7 @@ console.log(`
 
 
 var text = "a,b,c,1,2,d, e,f";
-var result = text.replace(/.../g, '...');
+var result = text.replace(/(\w\,)/, '$1 ');
 console.log(result);
 var expected = "a, b, c, 1, 2, d, e, f";
 if (expected === result) console.log("OK")
@@ -34,7 +34,7 @@ y el número. Pruebe con "h     = 4", "  temp = 5.6", "  x23= -2.3e1"
 `);
 
 var text = "h     = 4";
-var result = text.match(/.../);
+var result = text.match(/(\w)+\s=\s(\d)+/);
 console.log(result);
 if (result[1] == "h"  && result[2] == "4") console.log("OK")
 else console.log("ERROR!");
